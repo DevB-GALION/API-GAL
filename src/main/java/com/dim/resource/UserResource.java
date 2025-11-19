@@ -1,5 +1,5 @@
 package com.dim.resource;
-import com.dim.entity.User;
+import com.dim.entity.user.User;
 import com.dim.service.UserService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -18,10 +18,8 @@ public class UserResource {
         return userservice.findAll();
     }
 
-
     @POST
     public void addUser(User newUser){
-        userservice.addUser(newUser.name, newUser.email);
+        //this.userservice.registerUser(newUser.name, newUser.email, newUser.password);
     }
-
 }
