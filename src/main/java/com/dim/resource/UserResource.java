@@ -21,7 +21,20 @@ public class UserResource {
 
     @POST
     public void addUser(User newUser){
-        userservice.addUser(newUser.name, newUser.email);
+        userservice.addUser(newUser.name, newUser.email, newUser.password);
     }
 
+    @DELETE
+    @Path("/{id}")
+    public void deleteUser(@PathParam("id") long id){
+        userservice.delete(id);
+    }
+
+
+    @PUT
+    @Path("/{id}")
+    public User updateUser(@PathParam("id") long id, User updatedUser){
+        updatedUser.id = id;
+        return userservice.update(updatedUser);
+    }
 }
