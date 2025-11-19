@@ -2,6 +2,7 @@ package com.dim.resource;
 
 import com.dim.entity.user.User;
 import com.dim.service.AuthService;
+import io.vertx.core.json.Json;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
@@ -9,6 +10,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.jose4j.json.internal.json_simple.JSONObject;
 
 import java.net.http.HttpResponse;
 
@@ -34,4 +36,17 @@ public class AuthRessource {
         }
     }
 
+    @POST
+    @Path("login")
+    public Response login(User user) {
+        String token = authService.login(user.email, user.password);
+
+        if (token != null) {
+            return Response.ok(JSONObject.toString("token", token)).build();
+        } else {
+            return Response.status(Response.Status.UNAUTHORIZED)
+                    .entity("Invalid email or password")
+                    .build();
+        }
+    }
 }

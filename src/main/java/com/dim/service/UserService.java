@@ -8,6 +8,7 @@ import io.quarkus.elytron.security.common.BcryptUtil;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import org.jose4j.jwk.Use;
 
 
 import java.util.ArrayList;
@@ -29,6 +30,10 @@ public class UserService {
 
     public User findByEmail(String email) {
         return userRepository.find("email", email).firstResult();
+    }
+
+    public void createUser(User user){
+        userRepository.persist(user);
     }
 }
 
