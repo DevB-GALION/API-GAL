@@ -2,7 +2,6 @@ package com.dim.resource;
 
 import com.dim.entity.user.User;
 import com.dim.service.AuthService;
-import io.vertx.core.json.Json;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;

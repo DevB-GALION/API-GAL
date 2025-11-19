@@ -13,6 +13,6 @@ public class User {
     public String name;
     public String email;
     public String password;
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     public List<Role> role;
 }
