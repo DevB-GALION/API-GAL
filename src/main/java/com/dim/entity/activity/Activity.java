@@ -1,6 +1,7 @@
 package com.dim.entity.activity;
 
 import com.dim.entity.user.Animateur;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,15 +18,21 @@ import java.util.List;
 public class Activity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
-    public String name;
-    public Date startDate;
-    public Date endDate;
-    public String lieu;
+    private Long id;
+    private String name;
+    private Date startDate;
+    private Date endDate;
+    private String lieu;
     @ManyToMany
-    public List<Animateur> animateur;
-    @ManyToOne(cascade = CascadeType.ALL)
-    public ActivityType activityType;
-    @ManyToOne(cascade = CascadeType.ALL)
-    public ActivityLocation activityLocation;
+    @JoinTable(
+            name = "app_activity_animateur",
+            joinColumns = @JoinColumn(name = "activity_id"),
+            inverseJoinColumns = @JoinColumn(name = "animateur_id")
+    )
+    @JsonIgnore
+    private List<Animateur> animateur;
+    @ManyToOne
+    private ActivityType activityType;
+    @ManyToOne
+    private ActivityLocation activityLocation;
 }

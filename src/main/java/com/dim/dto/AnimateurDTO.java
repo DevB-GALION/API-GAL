@@ -10,6 +10,7 @@ import java.util.Date;
 @Getter
 @NoArgsConstructor
 public class AnimateurDTO {
+    public long id;
     public String lastname;
     public String firstname;
     public String genre;

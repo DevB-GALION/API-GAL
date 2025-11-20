@@ -16,12 +16,12 @@ import java.util.List;
 public class Animateur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public long id;
-    public String lastname;
-    public String firstname;
-    public String genre;
-    public Date birthDate;
-    public String diplome;
+    private long id;
+    private String lastname;
+    private String firstname;
+    private String genre;
+    private Date birthDate;
+    private String diplome;
     @OneToOne
-    public User user;
+    private User user;
 }
