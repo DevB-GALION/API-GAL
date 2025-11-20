@@ -24,6 +24,38 @@ public class ActivityResource {
     @Inject
     ActivityLocationService activityLocationService;
 
+
+
+    @GET
+    @Path("/locations")
+    public List<ActivityLocation> getActivityLocations() {
+        return activityLocationService.findAll();
+    }
+
+    @GET
+    @Path("/locations/{id}")
+    public ActivityLocation getActivityLocationById(@PathParam("id") Long id) {
+        return this.activityLocationService.findById(id);
+    }
+
+    @POST
+    @Path("/locations")
+    public ActivityLocation createActivityLocation(ActivityLocation activityLocation) {
+        return this.activityLocationService.createActivityLocation(activityLocation);
+    }
+
+    @PUT
+    @Path("/locations/{id}")
+    public ActivityLocation updateActivityLocation(@PathParam("id") Long id, ActivityLocation activityLocationData) {
+        return this.activityLocationService.updateActivityLocation(id, activityLocationData);
+    }
+
+    @DELETE
+    @Path("/locations/{id}")
+    public Boolean deleteActivityLocation(@PathParam("id") Long id) {
+        return this.activityLocationService.deleteActivityLocation(id);
+    }
+
     @GET
     @Path("/types")
     public List<ActivityType> getActivityTypes() {
