@@ -1,7 +1,7 @@
-package com.dim.service;
+package com.dim.service.group;
 
 import com.dim.entity.group.Group;
-import com.dim.repository.GroupRepository;
+import com.dim.repository.group.GroupRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;

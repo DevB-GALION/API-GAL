@@ -1,4 +1,4 @@
-package com.dim.repository;
+package com.dim.repository.group;
 
 import com.dim.entity.group.Group;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
