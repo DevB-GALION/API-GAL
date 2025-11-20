@@ -1,28 +1,22 @@
-package com.dim.entity.activity;
+package com.dim.dto;
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
 
-@Entity
-@Table(name = "app_deplacement")
 @Setter
 @Getter
 @NoArgsConstructor
-public class Deplacement {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class DeplacementDTO {
     public Long id;
     public String name;
     public String lieuDepart;
     public String lieuArrivee;
     public Date dateDepart;
     public Date dateArrivee;
-    @OneToOne
-    public Activity activity;
+    public int activityId;
     public String deplacementType;
     public int nbMax;
 }

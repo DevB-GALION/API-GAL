@@ -30,9 +30,11 @@ public class ActivityService {
     }
     @Transactional
     public Activity createActivity(Activity activity){
-        this.activityRepository.persist(activity);
+        activity.setId(null);
+        activityRepository.persist(activity);
         return activity;
     }
+
 
     @Transactional
     public Activity updateActivity(Long id, Activity activityData){
