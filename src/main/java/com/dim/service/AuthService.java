@@ -34,15 +34,14 @@ public class AuthService {
                 return false;
             }
 
-            newUser.name = name;
-            newUser.email = email;
-            newUser.password = password;
+            newUser.setName(name);
+            newUser.setEmail(email);
 
             List<Role> roles = new ArrayList<>();
             roles.add(roleService.findByName(RoleEnum.USER));
-            newUser.role = roles;
+            newUser.setRole(roles);
 
-            newUser.password = BcryptUtil.bcryptHash(password);
+            newUser.setPassword(BcryptUtil.bcryptHash(password));
 
             userService.createUser(newUser);
             LOG.info("Utilisateur ajouté : " + name + " (" + email + ")");

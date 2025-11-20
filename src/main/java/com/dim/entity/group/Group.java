@@ -1,4 +1,4 @@
-package com.dim.entity.role;
+package com.dim.entity.group;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -6,15 +6,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "app_role")
+@Table(name = "groups")
 @Setter
 @Getter
 @NoArgsConstructor
-public class Role {
+public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public long id;
-
-    @Enumerated(EnumType.STRING)
-    public RoleEnum name;
+    public Long id;
+    public String name;
+    @ManyToOne
+    public PeriodeAL periodeAL;
+    @ManyToOne
+    public TrancheAge trancheAge;
 }
