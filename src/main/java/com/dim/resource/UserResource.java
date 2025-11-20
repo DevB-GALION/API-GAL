@@ -1,6 +1,6 @@
 package com.dim.resource;
-import com.dim.entity.User;
 import com.dim.service.UserService;
+import com.dim.entity.user.User;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;

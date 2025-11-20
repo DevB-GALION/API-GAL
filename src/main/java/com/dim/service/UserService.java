@@ -1,6 +1,6 @@
 package com.dim.service;
 
-import com.dim.entity.User;
+import com.dim.entity.user.User;
 import com.dim.repository.UserRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -16,10 +16,16 @@ public class UserService {
     @Inject
     UserRepository userRepository;
 
+    @Inject
+    RoleService roleService;
+
     public List<User> findAll() {
         return userRepository.listAll();
     }
 
+    public User findByEmail(String email) {
+        return userRepository.find("email", email).firstResult();
+    }
     @Transactional
     public void addUser(String name, String email, String password ) {
         try{
@@ -55,6 +61,10 @@ public class UserService {
         }
     }
 
+    public void createUser(User user) {
+        userRepository.persist(user);
+    }
+
     @Transactional
     public User update(User updatedUser) {
         try {
@@ -78,7 +88,6 @@ public class UserService {
             throw e;
         }
     }
-
 }
 
 
