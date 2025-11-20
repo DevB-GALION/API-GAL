@@ -1,6 +1,6 @@
 package com.dim.resource;
-import com.dim.entity.user.User;
 import com.dim.service.UserService;
+import com.dim.entity.user.User;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -18,8 +18,23 @@ public class UserResource {
         return userservice.findAll();
     }
 
+
     @POST
     public void addUser(User newUser){
-        //this.userservice.registerUser(newUser.name, newUser.email, newUser.password);
+        userservice.addUser(newUser.name, newUser.email, newUser.password);
+    }
+
+    @DELETE
+    @Path("/{id}")
+    public void deleteUser(@PathParam("id") long id){
+        userservice.delete(id);
+    }
+
+
+    @PUT
+    @Path("/{id}")
+    public User updateUser(@PathParam("id") long id, User updatedUser){
+        updatedUser.id = id;
+        return userservice.update(updatedUser);
     }
 }
