@@ -1,5 +1,39 @@
-*
-!target/*-runner
-!target/*-runner.jar
-!target/lib/*
-!target/quarkus-app/*
+# Fichiers et dossiers à ignorer lors de la construction Docker
+
+# Maven - on garde seulement ce qui est nécessaire
+target/
+!target/quarkus-app/
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Application properties locaux (pour éviter d'exposer les mots de passe)
+src/main/resources/application-local.properties
+
+# Maven wrapper
+.mvn/wrapper/maven-wrapper.jar
+
+# Docker files
+Dockerfile*
+docker-compose*
