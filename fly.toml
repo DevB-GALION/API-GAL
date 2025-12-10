@@ -1,0 +1,25 @@
+# Configuration fly.io pour l'application Quarkus API-GAL
+app = "api-gal"
+primary_region = "cdg"
+
+[build]
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 1
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 512
+
+[env]
+  JAVA_OPTS = "-Xmx256m -Xms128m"
+  QUARKUS_PROFILE = "prod"
+  
+# Variables d'environnement pour la base de données
+# Seront configurées via : fly secrets set DATABASE_URL="..."
+# DATABASE_URL sera automatiquement parsée par Quarkus
